@@ -74,7 +74,7 @@ export class LanguageService {
     }
     getLanguageById(languageId: number)
     {
-      return this.http.get(this.url.concat("getUserById?languageId=",languageId.toString()))
+      return this.http.get(this.url.concat("getLanguageById?languageId=",languageId.toString()))
       .map(Response => Response.json())
       .catch(this.handleError);
     }
