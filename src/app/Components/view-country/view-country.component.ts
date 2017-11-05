@@ -19,7 +19,7 @@ export class ViewCountryComponent implements OnInit {
   public languageModel : CountryList;
   public languageList: EmployeeList[];
   
-    constructor(private Service: LanguageService,
+    constructor(public Service: LanguageService,
       public activeRoute: ActivatedRoute,
       public router:  Router, public currencyService: CurrencyService,
       public countryService: CountryService

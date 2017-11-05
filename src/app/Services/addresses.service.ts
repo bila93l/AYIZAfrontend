@@ -1,3 +1,5 @@
+import { AddressList } from './../Models/AddressList';
+import { CompanyList } from './../Models/CompanyList';
 import { EmployeeList } from './../Models/EmployeeList';
 import { AuthenticationError } from './../Models/AuthenticationError';
 import { BaseURL } from './../Constants/ServiceConstant';
@@ -9,11 +11,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/throw';
 
-
 @Injectable()
-export class LanguageService {
+export class AddressesService {
 
-  private ControllerName = "Language/";
+  private ControllerName = "Address/";
   private url: string 
   private header : Headers;
   constructor(public http: Http) {
@@ -24,44 +25,44 @@ export class LanguageService {
    }
 
     
-    getCompanyByCompanyId(companyId: string)
+    getAddressByAddressId(addressId: string)
     {
-      return this.http.get(this.url.concat("GetCompanyById?companyId=",companyId))
+      return this.http.get(this.url.concat("getAddressById?languageId=",addressId))
       .map(Response => Response.json())
       .catch(this.handleError);
     }
 
-    getyLanguageList()
+    getAddressList()
     {
-      return this.http.get(this.url.concat("getLanguagesData"))
+      return this.http.get(this.url.concat("getAddressData"))
       .map(Response => Response.json())
       .catch(this.handleError);
     }
 
-    deleteLanguage(companyId: number)
+    deleteAddress(addressId: number)
     {
-      return this.http.get(this.url.concat("deleteLanguages?languageId=",companyId.toString()))
+      return this.http.get(this.url.concat("deleteAddress?languageId=",addressId.toString()))
       .map(Response => Response.json())
       .catch(this.handleError);
     }
 
-    copyLanguage(companyId: number)
+    copyAddress(addressId: number)
     {
-      return this.http.get(this.url.concat("copyLanguage?languageId=",companyId.toString()))
+      return this.http.get(this.url.concat("copyAddress?languageId=",addressId.toString()))
       .map(Response => Response.json())
       .catch(this.handleError);
     }
 
-    addLanguage(employeelist: EmployeeList)
+    addAddress(addressList: AddressList)
     {
-      return this.http.post(this.url.concat("addLanguage"), JSON.stringify(employeelist), {headers: this.header})
+      return this.http.post(this.url.concat("addAddress"), JSON.stringify(addressList), {headers: this.header})
       .map(Response => Response.json())
       .catch(this.handleError);
     }
 
-    editLanguage(employeelist: EmployeeList)
+    editAddress(addressList: AddressList)
     {
-      return this.http.post(this.url.concat("editLanguage"), JSON.stringify(employeelist), {headers: this.header})
+      return this.http.post(this.url.concat("editAddress"), JSON.stringify(addressList), {headers: this.header})
       .map(Response => Response.json())
       .catch(this.handleError);
     }
@@ -72,9 +73,9 @@ export class LanguageService {
       .map(Response => Response.json())
       .catch(this.handleError);
     }
-    getLanguageById(languageId: number)
+    getAddressById(addressId: number)
     {
-      return this.http.get(this.url.concat("getUserById?languageId=",languageId.toString()))
+      return this.http.get(this.url.concat("getAddressById?languageId=",addressId.toString()))
       .map(Response => Response.json())
       .catch(this.handleError);
     }

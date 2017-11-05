@@ -1,3 +1,5 @@
+import { UserService } from './../../Services/user.service';
+import { UsersList } from './../../Models/UsersList';
 import { EmployeeList } from './../../Models/EmployeeList';
 import { AuthenticationError } from './../../Models/AuthenticationError';
 import { LanguageService } from './../../Services/language.service';
@@ -6,16 +8,17 @@ import { Subject } from "rxjs/Rx";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-language',
-  templateUrl: './language.component.html',
-  styleUrls: ['./language.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class LanguageComponent implements OnInit {
+export class UsersComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<DataTables.Settings> = new Subject<DataTables.Settings>();
-  employeeList: EmployeeList[]=[];
-  constructor(public lanService : LanguageService,
-    private router:  Router) { 
+  employeeList: UsersList[]=[];
+  constructor(public lanService : UserService,
+    public router:  Router) { 
 
   }
 
@@ -24,7 +27,7 @@ export class LanguageComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 5,
     };
-    this.lanService.getyLanguageList()
+    this.lanService.getUserList()
     .subscribe(data => {
       this.employeeList=data;
       this.dtTrigger.next();
@@ -36,14 +39,15 @@ export class LanguageComponent implements OnInit {
 
   view(Id: number)
   {
-    this.router.navigate(["/viewLanguage", Id]); 
+    console.log(Id);
+    this.router.navigate(["/viewUser", Id]); 
   }
 
   copy(Id: number)
   {
-    if(confirm("Do you want to copy this language?"))
+    if(confirm("Do you want to copy this User?"))
     {
-      this.lanService.copyLanguage(Id)
+      this.lanService.copyUser(Id)
       .subscribe(data => {
         location.reload();
       },
@@ -55,19 +59,19 @@ export class LanguageComponent implements OnInit {
 
   edit(Id: number)
   {
-    this.router.navigate(["/editLanguage", Id]); 
+    this.router.navigate(["/editUser", Id]); 
   }
 
   add()
   {
-    this.router.navigate(["/addLanguage"]); 
+    this.router.navigate(["/addUser"]); 
   }
 
   delete(Id: number)
   {
-    if(confirm("Do you want to delete this language?"))
+    if(confirm("Do you want to delete this User?"))
     {
-      this.lanService.deleteLanguage(Id)
+      this.lanService.deleteUser(Id)
       .subscribe(data => {
         location.reload();
       },

@@ -14,7 +14,7 @@ export class AddLanguageComponent implements OnInit {
 
   public languageModel : EmployeeList;
 
-  constructor(private Service: LanguageService,
+  constructor(public Service: LanguageService,
     public router:  Router,
     ) { }
 

@@ -14,8 +14,8 @@ export class EditlanguageComponent implements OnInit {
 
   public languageModel : EmployeeList;
   
-  constructor(private Service: LanguageService,
-    private activeRoute: ActivatedRoute,
+  constructor(public Service: LanguageService,
+    public activeRoute: ActivatedRoute,
     public router:  Router,
     ) { }
   

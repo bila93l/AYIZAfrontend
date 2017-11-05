@@ -18,7 +18,7 @@ export class CountryService {
   private ControllerName = "Country/";
   private url: string 
   private header : Headers;
-  constructor(private http: Http) {
+  constructor(public http: Http) {
     this.url=BaseURL.toString().concat(this.ControllerName);
     this.header = new Headers();
     this.header.append('Content-Type', 'application/json');

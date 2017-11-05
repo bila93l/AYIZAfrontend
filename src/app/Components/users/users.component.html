@@ -1,6 +1,6 @@
 <div>
   <div class="container ">
-    <div class="manage">Manage Addresses</div>
+    <div class="manage">Manage Users</div>
     <div class="manageBtn">
       <button class="btn btn-primary" (click)="add()">Add</button>
       <button class="btn btn-danger">Delete</button>
@@ -9,8 +9,10 @@
       <thead>
         <tr>
           <th></th>
-          <th>Address Type</th>
-          <th>Address Text</th>
+          <th>User First Name</th>
+          <th>User Last Name</th>
+          <th>User Type Code</th>
+          <th>User Group Code</th>
           <th></th>
           <th></th>
           <th></th>
@@ -20,19 +22,21 @@
       <tbody>
         <tr *ngFor="let com of employeeList">
           <td></td>
-          <td>{{ com.AddressType }}</td>
-          <td>{{ com.AddressText }}</td>
+          <td>{{ com.AY_F_USER_FM }}</td>
+          <td>{{ com.AY_F_USER_LN }}</td>
+          <td>{{ com.AY_F_UT_CODE }}</td>
+          <td>{{ com.AY_F_UG_CODE }}</td>
           <td style="width:5%">
-              <button class="btn btn-success" (click)="view(com.AddressId)">View</button>
+              <button class="btn btn-success" (click)="view(com.UserId)">View</button>
           </td>
           <td style="width:5%">
-              <button class="btn btn-primary" (click)="copy(com.AddressId)">Copy</button>
+              <button class="btn btn-primary" (click)="copy(com.UserId)">Copy</button>
           </td>
           <td style="width:5%">
-              <button class="btn btn-primary" (click)="edit(com.AddressId)">Edit</button>
+              <button class="btn btn-primary" (click)="edit(com.UserId)">Edit</button>
           </td>
           <td style="width:5%">
-              <button class="btn btn-danger" (click)="delete(com.AddressId)">Delete</button>
+              <button class="btn btn-danger" (click)="delete(com.UserId)">Delete</button>
           </td>
         </tr>
       </tbody>

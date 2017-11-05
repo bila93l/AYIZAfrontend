@@ -1,3 +1,5 @@
+import { UserService } from './Services/user.service';
+import { AddressesService } from './Services/addresses.service';
 import { CountryService } from './Services/countries.service';
 import { CurrencyService } from './Services/currency.service';
 import { SharedService } from './Services/shared.service';
@@ -30,6 +32,10 @@ import { AddressesComponent } from './Components/addresses/addresses.component';
 import { AddaddressComponent } from './Components/addaddress/addaddress.component';
 import { EditaddressComponent } from './Components/editaddress/editaddress.component';
 import { ViewaddressComponent } from './Components/viewaddress/viewaddress.component';
+import { UsersComponent } from './Components/users/users.component';
+import { AddUserComponent } from './Components/add-user/add-user.component';
+import { EditUserComponent } from './Components/edit-user/edit-user.component';
+import { ViewUserComponent } from './Components/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +60,10 @@ import { ViewaddressComponent } from './Components/viewaddress/viewaddress.compo
     AddaddressComponent,
     EditaddressComponent,
     ViewaddressComponent,
+    UsersComponent,
+    AddUserComponent,
+    EditUserComponent,
+    ViewUserComponent,
 
   ],
   imports: [
@@ -114,32 +124,46 @@ import { ViewaddressComponent } from './Components/viewaddress/viewaddress.compo
         path: 'addCountry', 
         component: AddCountryComponent 
       },
-      // { 
-      //   path: 'login', 
-      //   component: LoginComponent 
-      // },
-      // { 
-      //   path: 'company', 
-      //   component: CompanyListComponent, 
-      //   canActivate: [EnsureAuthenticated] 
-      // },
-      // { 
-      //   path: 'editcompany/:companyId', 
-      //   component: EditCompanyComponent,
-      //   canActivate: [EnsureAuthenticated] 
-      // },
-      // { 
-      //   path: 'addcompany', 
-      //   component: AddCompanyComponent,
-      //   canActivate: [EnsureAuthenticated] 
-      // },
+      { 
+        path: 'address', 
+        component: AddressesComponent 
+      },
+      { 
+        path: 'viewAddress/:addressId', 
+        component: ViewaddressComponent,
+      },
+      { 
+        path: 'editAddress/:addressId', 
+        component: EditaddressComponent 
+      },
+      { 
+        path: 'addAddress', 
+        component: AddaddressComponent 
+      },
+      { 
+        path: 'users', 
+        component: UsersComponent 
+      },
+      { 
+        path: 'viewUser/:userId', 
+        component: ViewUserComponent,
+      },
+      { 
+        path: 'editUser/:userId', 
+        component: EditUserComponent 
+      },
+      { 
+        path: 'addUser', 
+        component: AddUserComponent 
+      },
+      
       { 
         path: '**', 
         component: NotFoundComponent 
       },
     ])
   ],
-  providers: [LanguageService, SharedService, CurrencyService, CountryService
+  providers: [LanguageService, SharedService, CurrencyService, CountryService, AddressesService, UserService
             ],
   bootstrap: [AppComponent]
 })

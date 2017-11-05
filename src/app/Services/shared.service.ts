@@ -14,7 +14,7 @@ export class SharedService {
   private ControllerName = "Shared/";
   private url: string 
   private header : Headers;
-  constructor(private http: Http) {
+  constructor(public http: Http) {
     this.url=BaseURL.toString().concat(this.ControllerName);
     this.header = new Headers();
     this.header.append('Content-Type', 'application/json');
@@ -22,13 +22,7 @@ export class SharedService {
    }
 
     
-    getCompanyByCompanyId(companyId: string)
-    {
-      return this.http.get(this.url.concat("GetCompanyById?companyId=",companyId))
-      .map(Response => Response.json())
-      .catch(this.handleError);
-    }
-
+    
     getDashboardCount()
     {
       return this.http.get(this.url.concat("getDashboardCount"))
@@ -36,26 +30,6 @@ export class SharedService {
       .catch(this.handleError);
     }
 
-    deleteLanguage(companyId: number)
-    {
-      return this.http.get(this.url.concat("deleteLanguages?languageId=",companyId.toString()))
-      .map(Response => Response.json())
-      .catch(this.handleError);
-    }
-
-    copyLanguage(companyId: number)
-    {
-      return this.http.get(this.url.concat("copyLanguage?languageId=",companyId.toString()))
-      .map(Response => Response.json())
-      .catch(this.handleError);
-    }
-
-    markUnpaid()
-    {
-      return this.http.post(this.url.concat("markCompaniesUnpaid"), "", {headers: this.header})
-      .map(Response => Response.json())
-      .catch(this.handleError);
-    }
 
    private handleError(error: Response)
    {  
