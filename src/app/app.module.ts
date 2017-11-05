@@ -26,6 +26,10 @@ import { CountriesComponent } from './Components/countries/countries.component';
 import { AddCountryComponent } from './Components/add-country/add-country.component';
 import { EditCountryComponent } from './Components/edit-country/edit-country.component';
 import { ViewCountryComponent } from './Components/view-country/view-country.component';
+import { AddressesComponent } from './Components/addresses/addresses.component';
+import { AddaddressComponent } from './Components/addaddress/addaddress.component';
+import { EditaddressComponent } from './Components/editaddress/editaddress.component';
+import { ViewaddressComponent } from './Components/viewaddress/viewaddress.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { ViewCountryComponent } from './Components/view-country/view-country.com
     CountriesComponent,
     AddCountryComponent,
     EditCountryComponent,
-    ViewCountryComponent
+    ViewCountryComponent,
+    AddressesComponent,
+    AddaddressComponent,
+    EditaddressComponent,
+    ViewaddressComponent,
 
   ],
   imports: [
