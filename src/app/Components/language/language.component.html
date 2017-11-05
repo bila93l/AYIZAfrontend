@@ -1,0 +1,41 @@
+<div>
+<div class="container ">
+  <div class="manage">Manage Languages</div>
+  <div class="manageBtn">
+    <button class="btn btn-primary" (click)="add()">Add</button>
+    <button class="btn btn-danger">Delete</button>
+  </div>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" style="border: 1px solid;">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Language Code</th>
+        <th>Language Text</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let com of employeeList">
+        <td></td>
+        <td>{{ com.AY_F_LANG_CODE }}</td>
+        <td>{{ com.AY_F_LANG_TEXT }}</td>
+        <td style="width:5%">
+            <button class="btn btn-success" (click)="view(com.Id)">View</button>
+        </td>
+        <td style="width:5%">
+            <button class="btn btn-primary" (click)="copy(com.Id)">Copy</button>
+        </td>
+        <td style="width:5%">
+            <button class="btn btn-primary" (click)="edit(com.Id)">Edit</button>
+        </td>
+        <td style="width:5%">
+            <button class="btn btn-danger" (click)="delete(com.Id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

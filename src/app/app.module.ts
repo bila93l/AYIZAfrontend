@@ -1,16 +1,138 @@
+import { CountryService } from './Services/countries.service';
+import { CurrencyService } from './Services/currency.service';
+import { SharedService } from './Services/shared.service';
+import { DashBoardAlertComponent } from './Components/dash-board-alet/dash-board-alert.component';
+import { DashBoardComponent } from './Components/dash-board/dash-board.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { LanguageService } from './Services/language.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LanguageComponent } from './Components/language/language.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ViewlanguageComponent } from './Components/viewlanguage/viewlanguage.component';
+import { EditlanguageComponent } from './Components/editlanguage/editlanguage.component';
+import { AddLanguageComponent } from './Components/add-language/add-language.component';
+import { CurrenciesComponent } from './Components/currencies/currencies.component';
+import { AddCurrencyComponent } from './Components/add-currency/add-currency.component';
+import { EditCurrencyComponent } from './Components/edit-currency/edit-currency.component';
+import { ViewCurrencyComponent } from './Components/view-currency/view-currency.component';
+import { CountriesComponent } from './Components/countries/countries.component';
+import { AddCountryComponent } from './Components/add-country/add-country.component';
+import { EditCountryComponent } from './Components/edit-country/edit-country.component';
+import { ViewCountryComponent } from './Components/view-country/view-country.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LanguageComponent,
+    HeaderComponent,
+    ViewlanguageComponent,
+    EditlanguageComponent,
+    AddLanguageComponent,
+    DashBoardComponent,
+    NotFoundComponent,
+    DashBoardAlertComponent,
+    CurrenciesComponent,
+    AddCurrencyComponent,
+    EditCurrencyComponent,
+    ViewCurrencyComponent,
+    CountriesComponent,
+    AddCountryComponent,
+    EditCountryComponent,
+    ViewCountryComponent
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    DataTablesModule,
+    RouterModule.forRoot([
+      { 
+        path: '', 
+        component: DashBoardComponent
+      },
+      { 
+        path: 'language', 
+        component: LanguageComponent 
+      },
+      { 
+        path: 'viewLanguage/:languageId', 
+        component: ViewlanguageComponent,
+      },
+      { 
+        path: 'editLanguage/:languageId', 
+        component: EditlanguageComponent 
+      },
+      { 
+        path: 'addLanguage', 
+        component: AddLanguageComponent 
+      },
+      { 
+        path: 'currency', 
+        component: CurrenciesComponent 
+      },
+      { 
+        path: 'viewCurrency/:currencyId', 
+        component: ViewCurrencyComponent,
+      },
+      { 
+        path: 'editCurrency/:currencyId', 
+        component: EditCurrencyComponent 
+      },
+      { 
+        path: 'addCurrency', 
+        component: AddCurrencyComponent 
+      },
+      { 
+        path: 'country', 
+        component: CountriesComponent 
+      },
+      { 
+        path: 'viewCountry/:countryId', 
+        component: ViewCountryComponent,
+      },
+      { 
+        path: 'editCountry/:countryId', 
+        component: EditCountryComponent 
+      },
+      { 
+        path: 'addCountry', 
+        component: AddCountryComponent 
+      },
+      // { 
+      //   path: 'login', 
+      //   component: LoginComponent 
+      // },
+      // { 
+      //   path: 'company', 
+      //   component: CompanyListComponent, 
+      //   canActivate: [EnsureAuthenticated] 
+      // },
+      // { 
+      //   path: 'editcompany/:companyId', 
+      //   component: EditCompanyComponent,
+      //   canActivate: [EnsureAuthenticated] 
+      // },
+      // { 
+      //   path: 'addcompany', 
+      //   component: AddCompanyComponent,
+      //   canActivate: [EnsureAuthenticated] 
+      // },
+      { 
+        path: '**', 
+        component: NotFoundComponent 
+      },
+    ])
   ],
-  providers: [],
+  providers: [LanguageService, SharedService, CurrencyService, CountryService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,45 @@
+<div>
+    <div class="container ">
+      <div class="manage">Manage Currencies</div>
+      <div class="manageBtn">
+        <button class="btn btn-primary" (click)="add()">Add</button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" style="border: 1px solid;">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Currency Code</th>
+            <th>Currency Text</th>
+            <th>Currency Symbol</th>
+            <th>Currency ISOCode</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let com of employeeList">
+            <td></td>
+            <td>{{ com.CurrencyCode }}</td>
+            <td>{{ com.CurrencyText }}</td>
+            <td>{{ com.CurrencySymbol }}</td>
+            <td>{{ com.CurrencyISOCode }}</td>
+            <td style="width:5%">
+                <button class="btn btn-success" (click)="view(com.CurrencyId)">View</button>
+            </td>
+            <td style="width:5%">
+                <button class="btn btn-primary" (click)="copy(com.CurrencyId)">Copy</button>
+            </td>
+            <td style="width:5%">
+                <button class="btn btn-primary" (click)="edit(com.CurrencyId)">Edit</button>
+            </td>
+            <td style="width:5%">
+                <button class="btn btn-danger" (click)="delete(com.CurrencyId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
